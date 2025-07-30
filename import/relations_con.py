@@ -18,13 +18,13 @@ logging.basicConfig(level=logging.INFO)
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
 def import_con_rel_file(xml_path):
-    logging.info(f"Processing: {xml_path}")
+    logging.info(f"📄 Processing: {xml_path}")
     tree = etree.parse(xml_path)
     root = tree.getroot()
 
     logging.info(f"Opening session on {NEO4J_URI} to database {NEO4J_DB} as user {NEO4J_USER}")
     with driver.session(database=NEO4J_DB) as session:
-        logging.info(f"Processing Relations //con_rel")
+        logging.info(f"⚙️ Processing Relations //con_rel")
         for rel in root.xpath("//con_rel"):
 
             source = rel.get("from")
@@ -34,7 +34,7 @@ def import_con_rel_file(xml_path):
             inverse = rel.get("inv")
 
             if not source or not target or not name or not direction:
-                logging.info(f"Skipping malformed <con_rel>: {etree.tostring(rel)}")
+                logging.info(f"🚩 Skipping malformed <con_rel>: {etree.tostring(rel)}")
                 continue
 
             with driver.session(database=NEO4J_DB) as session:
@@ -42,9 +42,9 @@ def import_con_rel_file(xml_path):
                 # Forward direction
                 if direction in ("one", "revert", "both"):
                     rel_type = name.upper()
-                    
                     session.run(f"""
-                        MATCH (s:Synset {{id: $source}}), (t:Synset {{id: $target}})
+                        MATCH (s:Synset {{id: $source}})
+                        MATCH (t:Synset {{id: $target}})
                         MERGE (s)-[:{rel_type}]->(t)
                     """, {"source": source, "target": target})
 
@@ -52,7 +52,8 @@ def import_con_rel_file(xml_path):
                 if direction in ("revert", "both") and inverse:
                     rel_type = inverse.upper()
                     session.run(f"""
-                        MATCH (s:Synset {{id: $source}}), (t:Synset {{id: $target}})
+                        MATCH (s:Synset {{id: $source}})
+                        MATCH (t:Synset {{id: $target}})
                         MERGE (s)-[:{rel_type}]->(t)
                     """, {"source": target, "target": source})
 
@@ -61,5 +62,6 @@ def process_all_con_rel(xml_dir):
         if file.endswith("_relations.xml"):
             path = os.path.join(xml_dir, file)
             import_con_rel_file(path)
+    logging.info("✅ All Synset Relations imported into database:", NEO4J_DB)
 
 process_all_con_rel(GERMANET_FOLDER)
