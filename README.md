@@ -40,6 +40,7 @@ corresponds to the wiktionary article from which the sense originates.
 
 If you imported the wiktionaryPhrases, you can get subgraphs like this:
 ![image](/images/graph_w11677.png)
+
 There are two senses for the WiktionaryLemma `w11677` [Blues](https://de.wiktionary.org/wiki/Blues) (based on the mapped data in the original `wiktionaryParaphrases-nomen.xml`-file): "afroamerikanische Musikrichtung" and "ein Tanz" 
 with the WiktionarySense nodes `w11677_0` and `w11677_2`. The are related to the LexUnits `l37183` and `l25067` (Blues). The first one has a synonym "Bluesmusik" (`l37184`).
 "Blues" (`l37183`) and "Bluesmusik" (`l37184`) belong to the Synset `s27224`.
