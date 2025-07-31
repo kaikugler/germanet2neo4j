@@ -1,8 +1,11 @@
 # germanet2neo4j
 python-scripts to import GermaNet XML into a Neo4j database 
 
-## How to import [GermaNet](https://uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fachbereiche/neuphilologie/seminar-fuer-sprachwissenschaft/arbeitsbereiche/allg-sprachwissenschaft-computerlinguistik/ressourcen/lexica/germanet-1/) (see [^3] and [^4])
-into your Neo4j- or ONg-Database
+## How to import [GermaNet](https://uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fachbereiche/neuphilologie/seminar-fuer-sprachwissenschaft/arbeitsbereiche/allg-sprachwissenschaft-computerlinguistik/ressourcen/lexica/germanet-1/) into your Neo4j- or ONg-Database
+
+GermaNet is a lexical-semantic word network that semantically relates German nouns, verbs and adjectives to each other by grouping lexical units that 
+express the same concept into synsets and defining semantic relations between these synsets (see [^3] and [^4]).
+The data itself is not part of this repository, see the [license agreements for GermaNet](https://uni-tuebingen.de/fakultaeten/philosophische-fakultaet/fachbereiche/neuphilologie/seminar-fuer-sprachwissenschaft/arbeitsbereiche/allg-sprachwissenschaft-computerlinguistik/ressourcen/lexica/germanet-1/lizenzen/)
 
 ### prepare the database by importing the basic nodes
 
