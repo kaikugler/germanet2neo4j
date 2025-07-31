@@ -46,9 +46,16 @@ with the WiktionarySense nodes `w11677_0` and `w11677_2`. The are related to the
 "Blues" (`l37183`) and "Bluesmusik" (`l37184`) belong to the Synset `s27224`.
 
 To get the Wikipedia paraphrase for the synset `s27224` you can run
-```MATCH (syn:Synset {id: "s27224"})<-[:BELONGS_TO]-(lu:LexUnit)-[:HAS_SENSE]->(ws:WiktionarySense)
-RETURN ws.paraphrase AS paraphrase```
+
+```
+MATCH (syn:Synset {id: "s27224"})<-[:BELONGS_TO]-(lu:LexUnit)-[:HAS_SENSE]->(ws:WiktionarySense)
+RETURN ws.paraphrase AS paraphrase
+```
+
 resulting in "amerikanische Musikrichtung".
 
 To map the Sysets to the senses from the Wiktionary articles, use a query like:
-```MATCH (syn:Synset)<-[:BELONGS_TO]-(lu:LexUnit)-[:HAS_SENSE]->(ws:WiktionarySense)```
+
+```
+MATCH (syn:Synset)<-[:BELONGS_TO]-(lu:LexUnit)-[:HAS_SENSE]->(ws:WiktionarySense)
+```
