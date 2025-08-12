@@ -3,9 +3,9 @@ from neo4j import GraphDatabase
 import json
 
 # Neo4j credentials
-NEO4J_URI = "bolt://136.199.93.37:7687"
+NEO4J_URI = "bolt://:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "Aneo4!37DE"
+NEO4J_PASSWORD = ""
 XML = "/home/kai/GN_V190_XML/wiktionaryParaphrases-nomen.xml"
 
 # 1. Parse XML and collect entries
